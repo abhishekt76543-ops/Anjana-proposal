@@ -2,84 +2,70 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>A Little Game ❤️</title><style>
 *{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;font-family:Georgia,serif;color:#fff;
- background:radial-gradient(circle at top,#3a071d,#090308 65%);
- overflow-x:hidden;
-}
-body:before{
- content:"";position:fixed;inset:0;pointer-events:none;opacity:.35;
- background-image:radial-gradient(#ff6b9d 1px,transparent 1px);
- background-size:28px 28px;
-}
-.card{
- width:min(94%,560px);min-height:92vh;margin:4vh auto;padding:28px 20px;
- display:flex;flex-direction:column;justify-content:center;align-items:center;
- text-align:center;position:relative;z-index:2;
-}
-.top{font-size:15px;letter-spacing:3px;color:#ff9fbe;margin-bottom:18px}
-.heart{font-size:62px;filter:drop-shadow(0 0 15px #ff3f83);animation:pulse 1.2s infinite}
-h1{font-size:clamp(32px,9vw,52px);margin:10px 0;color:#ffd2e1}
-h2{font-size:28px;color:#ffb5ce}
-p{font-size:19px;line-height:1.65}
-.quote{font-size:21px;line-height:1.7;color:#ffe7ef}
-.signature{font-size:26px;font-style:italic;color:#ff9fbe;margin-top:15px}
-.btn{
- display:inline-block;border:1px solid #ff5b93;border-radius:999px;
- padding:15px 28px;margin:8px;background:linear-gradient(135deg,#ff3d78,#a51450);
- color:white;text-decoration:none;font-size:18px;box-shadow:0 0 25px #ff2d703d;
- cursor:pointer
-}
+body{margin:0;min-height:100vh;font-family:Georgia,serif;color:#fff;background:radial-gradient(circle at top,#3a071d,#090308 65%);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.35;background-image:radial-gradient(#ff6b9d 1px,transparent 1px);background-size:28px 28px}
+.card{width:min(94%,560px);min-height:92vh;margin:4vh auto;padding:28px 20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;z-index:2}
+.top{font-size:15px;letter-spacing:3px;color:#ff9fbe;margin-bottom:18px}.heart{font-size:62px;filter:drop-shadow(0 0 15px #ff3f83);animation:pulse 1.2s infinite}
+h1{font-size:clamp(32px,9vw,52px);margin:10px 0;color:#ffd2e1}h2{font-size:28px;color:#ffb5ce}p{font-size:19px;line-height:1.65}
+.btn{display:inline-block;border:1px solid #ff5b93;border-radius:999px;padding:14px 25px;margin:8px;background:linear-gradient(135deg,#ff3d78,#a51450);color:white;text-decoration:none;font-size:18px;box-shadow:0 0 25px #ff2d703d;cursor:pointer}
 .choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;margin:24px 0}
-.choice{
- min-height:190px;border:1px solid #ff4f8c;border-radius:22px;
- background:linear-gradient(180deg,#2b0719,#12030b);
- color:white;cursor:pointer;display:flex;flex-direction:column;
- align-items:center;justify-content:center;box-shadow:0 0 22px #ff36722e
-}
-.choice span:first-child{font-size:42px}.choice b{font-size:18px;margin-top:10px}
-.hidden-photo{display:none;width:100%}
-.hidden-photo img{width:100%;max-height:520px;object-fit:contain;border-radius:22px;box-shadow:0 0 30px #ff367255}
+.choice{min-height:170px;border:1px solid #ff4f8c;border-radius:22px;background:linear-gradient(180deg,#2b0719,#12030b);color:white;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 22px #ff36722e}
+.choice span{font-size:42px}.choice b{font-size:18px;margin-top:10px}.small{font-size:14px;color:#d9a8ba}
+.photo-stage{display:none;width:100%;animation:fade .35s ease}
+.photo-stage img{width:100%;max-height:500px;object-fit:contain;border-radius:22px;box-shadow:0 0 30px #ff367255}
 .memory{font-size:20px;color:#ffd8e5;margin:14px 0}
-.yes{
- width:min(100%,470px);padding:18px;margin:9px;border-radius:18px;
- border:1px solid #ff8fb4;background:linear-gradient(135deg,#ff4f88,#d21b64);
- color:white;font-size:21px;cursor:pointer;box-shadow:0 0 28px #ff3c824d
-}
-.yes.alt{background:linear-gradient(135deg,#d42d82,#8d236e)}
-#final{display:none}
-.float{position:fixed;bottom:-40px;z-index:5;animation:rise 6s linear forwards}
-@keyframes pulse{50%{transform:scale(1.12)}}
-@keyframes rise{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
-.small{font-size:14px;color:#d9a8ba}
+.photo-nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+#continue{display:none}
+@keyframes pulse{50%{transform:scale(1.12)}}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 </style></head>
 <body><main class="card">
-<div class="top">2 / 3</div><div class="heart">💌</div>
-<h1>A Little Game</h1><h2>For My Malkin ❤️</h2>
-<p>Choose one. The photo inside is a little surprise from Abhishek. 🥰</p>
-<div class="choice-grid">
-<button class="choice" onclick="openPhoto(1)"><span>💗</span><b>1</b><small>Tap to open</small></button>
-<button class="choice" onclick="openPhoto(2)"><span>🌹</span><b>2</b><small>Tap to open</small></button>
-<button class="choice" onclick="openPhoto(3)"><span>💕</span><b>3</b><small>Tap to open</small></button>
+<div class="top">2 / 3</div>
+<div class="heart">💌</div>
+<h1>A Little Game</h1>
+<h2>For My Malkin ❤️</h2>
+<p id="instruction">Three little surprises are waiting for you. Choose any one. 🥰</p>
+
+<div class="choice-grid" id="choices">
+<button class="choice" type="button" onclick="openPhoto(1)"><span>💗</span><b>1</b><small>Tap to open</small></button>
+<button class="choice" type="button" onclick="openPhoto(2)"><span>🌹</span><b>2</b><small>Tap to open</small></button>
+<button class="choice" type="button" onclick="openPhoto(3)"><span>💕</span><b>3</b><small>Tap to open</small></button>
 </div>
-<div id="photoBox" class="hidden-photo">
+
+<div class="photo-stage" id="stage">
 <img id="memoryPhoto" src="" alt="A special memory">
 <div id="memoryText" class="memory"></div>
-<a class="btn" href="page3.html">Continue ❤️</a>
+
+<div class="photo-nav">
+<button class="btn" type="button" onclick="openPhoto(1)">See Photo 1 ❤️</button>
+<button class="btn" type="button" onclick="openPhoto(2)">See Photo 2 🌹</button>
+<button class="btn" type="button" onclick="openPhoto(3)">See Photo 3 💕</button>
 </div>
-<p class="small">The photos stay hidden until you choose one.</p>
+
+<a class="btn" id="continue" href="page3.html">I've seen all three — Continue ❤️</a>
+</div>
+
+<p class="small" id="note">The photos stay hidden until you choose one.</p>
 </main>
+
 <script>
-const texts={
-1:"A beautiful memory, and a beautiful reason to smile. ❤️",
-2:"Some moments become memories because the person beside you makes them special. 🌹",
-3:"No matter which photo you choose, this one has a special place in my heart. 💕"
+const texts = {
+  1:"A beautiful memory, and a beautiful reason to smile. ❤️",
+  2:"Some moments become memories because the person beside you makes them special. 🌹",
+  3:"This memory has a special place in my heart. 💕"
 };
-function openPhoto(n){
- document.getElementById("memoryPhoto").src="photo"+n+".jpg";
- document.getElementById("memoryText").textContent=texts[n];
- document.getElementById("photoBox").style.display="block";
- document.querySelector(".choice-grid").style.display="none";
- window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+const seen = new Set();
+
+function openPhoto(n) {
+  seen.add(n);
+  document.getElementById("memoryPhoto").src = "photo" + n + ".jpg";
+  document.getElementById("memoryText").textContent = texts[n];
+  document.getElementById("stage").style.display = "block";
+  document.getElementById("choices").style.display = "none";
+  document.getElementById("instruction").textContent = "You can open the other memories too. ❤️";
+  document.getElementById("note").textContent = seen.size === 3
+    ? "All three memories opened. Your final question is waiting. ❤️"
+    : "Choose another memory whenever you like.";
+  if (seen.size === 3) document.getElementById("continue").style.display = "inline-block";
+  document.getElementById("stage").scrollIntoView({behavior:"smooth",block:"center"});
 }
 </script></body></html>
