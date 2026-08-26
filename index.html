@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Anjana ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Georgia,serif;background:linear-gradient(135deg,#ffdde1,#ee9ca7);color:#5a1830;overflow-x:hidden}
+.card{width:min(94%,560px);margin:25px auto;padding:28px 20px;text-align:center;border-radius:28px;background:rgba(255,255,255,.95);box-shadow:0 20px 60px rgba(80,0,30,.25);position:relative;z-index:2}
+.heart{font-size:58px;animation:pulse 1.2s infinite}
+h1{font-size:36px;margin:8px 0}
+p{font-size:19px;line-height:1.55}
+.gallery{display:flex;gap:12px;overflow-x:auto;padding:12px 2px 18px;scroll-snap-type:x mandatory}
+.gallery img{width:100%;max-width:470px;flex:0 0 100%;height:390px;object-fit:cover;border-radius:20px;scroll-snap-align:center;box-shadow:0 8px 25px rgba(0,0,0,.18)}
+#question{font-size:25px;margin:18px 0}
+.buttons{display:flex;gap:16px;justify-content:center;min-height:58px}
+button{border:0;border-radius:999px;padding:14px 25px;font-size:18px;cursor:pointer;background:#d81b60;color:white;box-shadow:0 8px 20px rgba(216,27,96,.25)}
+#no{background:#777;transition:.2s}
+#answer{display:none;margin-top:25px;font-size:25px;font-weight:bold}
+.small{font-size:15px;color:#8a5365}
+.float{position:fixed;bottom:-40px;font-size:24px;animation:rise 7s linear forwards;z-index:1}
+@keyframes pulse{50%{transform:scale(1.15)}}
+@keyframes rise{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="heart">❤️</div>
+<h1>Anjana (Malkin)</h1>
+
+<div class="gallery">
+<img src="photo1.jpg" alt="Our memory">
+<img src="photo2.jpg" alt="Our memory">
+</div>
+
+<p id="message">
+Dear Anjana,<br><br>
+Some feelings are too beautiful to keep hidden.
+You make Abhishek's world brighter and his heart happier.
+<br><br>
+So, with all my heart, I want to ask you...
+</p>
+
+<div id="question">Will you be mine? 💍❤️</div>
+
+<div class="buttons">
+<button id="yes" onclick="sayYes()">YES ❤️</button>
+<button id="no" onclick="sayNo()">NO 🙈</button>
+</div>
+
+<div id="answer">
+You said YES! 🥰❤️<br>
+<span class="small">Abhishek is officially the happiest person today. 💕</span>
+</div>
+</div>
+
+<script>
+let count=0;
+const messages=[
+"Are you sure, Anjana? 🥺❤️",
+"Please think again... Abhishek really likes you. 🌹",
+"One more chance? 🥹💖",
+"Don't break Abhishek's heart! ❤️‍🩹",
+"Maybe your heart is saying YES? 😍",
+"Anjana, one last time... Will you be mine? 💍❤️",
+"I am still waiting for your YES! 🥰",
+"The YES button is waiting for you! ❤️"
+];
+
+function sayNo(){
+count++;
+document.getElementById("message").innerHTML=messages[(count-1)%messages.length];
+document.getElementById("question").innerHTML="Will you give Abhishek a chance? ❤️";
+const no=document.getElementById("no");
+no.style.position="fixed";
+no.style.left=(8+Math.random()*70)+"vw";
+no.style.top=(25+Math.random()*55)+"vh";
+const yes=document.getElementById("yes");
+yes.style.transform="scale("+(1+Math.min(count,6)*0.04)+")";
+}
+
+function sayYes(){
+document.getElementById("answer").style.display="block";
+document.getElementById("message").innerHTML=
+"You made Abhishek's heart very happy! ❤️<br><br>Thank you for giving us a chance. Here's to beautiful moments together. 🌹";
+document.getElementById("question").innerHTML="I LOVE YOU, ANJANA ❤️";
+document.getElementById("no").style.display="none";
+document.getElementById("yes").style.display="none";
+
+for(let i=0;i<45;i++){
+const h=document.createElement("div");
+h.className="float";
+h.textContent=["❤️","💕","💖","🌹"][Math.floor(Math.random()*4)];
+h.style.left=Math.random()*100+"vw";
+h.style.animationDelay=Math.random()*2+"s";
+h.style.fontSize=(18+Math.random()*25)+"px";
+document.body.appendChild(h);
+}
+}
+</script>
+</body>
+</html>
