@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>For My Malkin ❤️</title><style>
+<title>Will You Be Mine? ❤️</title><style>
 *{box-sizing:border-box}
 body{
  margin:0;min-height:100vh;font-family:Georgia,serif;color:#fff;
@@ -54,12 +54,32 @@ p{font-size:19px;line-height:1.65}
 .small{font-size:14px;color:#d9a8ba}
 </style></head>
 <body><main class="card">
-<div class="top">1 / 3</div><div class="heart">❤️</div>
-<h1>For My Malkin</h1><h2>From Abhishek ❤️</h2>
-<p class="quote">“Some people come into our lives and simply become a part of our story… but you, Malkin, became a part of my heart.”</p>
-<p>You are not just a part of my life, you are one of the most beautiful parts of it. Your smile can brighten my worst day, and your presence can make ordinary moments feel special.</p>
-<p>I may not always say things perfectly, and I may make mistakes, but one thing I never want you to doubt is how deeply I care about you.</p>
-<p><b>If my heart had a favorite place, it would always be wherever you are. ❤️</b></p>
-<div class="signature">With all my heart,<br>Abhishek ❤️</div>
-<a class="btn" href="page2.html">Continue to our little game →</a>
-</main></body></html>
+<div class="top">3 / 3</div><div class="heart">💖</div>
+<h1>The Last Question</h1><h2>For My Malkin</h2>
+<p class="quote">After everything we've shared, there's only one thing I want to ask you...</p>
+<h1>Will You Be Mine? ❤️</h1>
+<div id="choices">
+<button class="yes" onclick="answer('I am yours ❤️')">YES — I am yours 🥰</button>
+<button class="yes alt" onclick="answer('You are mine ❤️')">YES — You are mine 🥰</button>
+</div>
+<div id="final">
+<h2>Then it's official! ❤️</h2>
+<p>You chose with your heart, and that's all Abhishek could ever ask for.</p>
+<div class="signature">Malkin ❤️ Abhishek</div>
+<p class="small">Whatever happens, my heart will always wish you happiness.</p>
+</div>
+</main>
+<script>
+function answer(message){
+ document.getElementById("choices").style.display="none";
+ document.getElementById("final").style.display="block";
+ for(let i=0;i<55;i++){
+  const h=document.createElement("div");h.className="float";
+  h.textContent=["❤️","💕","💖","🌹"][Math.floor(Math.random()*4)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(18+Math.random()*25)+"px";
+  h.style.animationDelay=Math.random()*1.5+"s";
+  document.body.appendChild(h);
+ }
+}
+</script></body></html>

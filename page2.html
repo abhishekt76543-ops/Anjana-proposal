@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>For My Malkin ❤️</title><style>
+<title>A Little Game ❤️</title><style>
 *{box-sizing:border-box}
 body{
  margin:0;min-height:100vh;font-family:Georgia,serif;color:#fff;
@@ -54,12 +54,32 @@ p{font-size:19px;line-height:1.65}
 .small{font-size:14px;color:#d9a8ba}
 </style></head>
 <body><main class="card">
-<div class="top">1 / 3</div><div class="heart">❤️</div>
-<h1>For My Malkin</h1><h2>From Abhishek ❤️</h2>
-<p class="quote">“Some people come into our lives and simply become a part of our story… but you, Malkin, became a part of my heart.”</p>
-<p>You are not just a part of my life, you are one of the most beautiful parts of it. Your smile can brighten my worst day, and your presence can make ordinary moments feel special.</p>
-<p>I may not always say things perfectly, and I may make mistakes, but one thing I never want you to doubt is how deeply I care about you.</p>
-<p><b>If my heart had a favorite place, it would always be wherever you are. ❤️</b></p>
-<div class="signature">With all my heart,<br>Abhishek ❤️</div>
-<a class="btn" href="page2.html">Continue to our little game →</a>
-</main></body></html>
+<div class="top">2 / 3</div><div class="heart">💌</div>
+<h1>A Little Game</h1><h2>For My Malkin ❤️</h2>
+<p>Choose one. The photo inside is a little surprise from Abhishek. 🥰</p>
+<div class="choice-grid">
+<button class="choice" onclick="openPhoto(1)"><span>💗</span><b>1</b><small>Tap to open</small></button>
+<button class="choice" onclick="openPhoto(2)"><span>🌹</span><b>2</b><small>Tap to open</small></button>
+<button class="choice" onclick="openPhoto(3)"><span>💕</span><b>3</b><small>Tap to open</small></button>
+</div>
+<div id="photoBox" class="hidden-photo">
+<img id="memoryPhoto" src="" alt="A special memory">
+<div id="memoryText" class="memory"></div>
+<a class="btn" href="page3.html">Continue ❤️</a>
+</div>
+<p class="small">The photos stay hidden until you choose one.</p>
+</main>
+<script>
+const texts={
+1:"A beautiful memory, and a beautiful reason to smile. ❤️",
+2:"Some moments become memories because the person beside you makes them special. 🌹",
+3:"No matter which photo you choose, this one has a special place in my heart. 💕"
+};
+function openPhoto(n){
+ document.getElementById("memoryPhoto").src="photo"+n+".jpg";
+ document.getElementById("memoryText").textContent=texts[n];
+ document.getElementById("photoBox").style.display="block";
+ document.querySelector(".choice-grid").style.display="none";
+ window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+}
+</script></body></html>
